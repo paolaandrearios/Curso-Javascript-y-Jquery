@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery vs Vanilla JavaScript</title>
+</head>
+<body>
+  <button id="boton">Click me!</button>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  // USANDO VANILLA JS
+    // var boton = document.getElementById('boton');
+    // boton.addEventListener('click', function(ev) {
+    //   var request = new XMLHttpRequest();
+    //   request.open('GET', 'http://api.tvmaze.com/shows/1', true);
+
+    //   request.onload = function() {
+    //     if (request.status >= 200 && request.status < 400) {
+    //       var data = JSON.parse(request.responseText);
+    //       var p = document.createElement('p');
+    //       var img = document.createElement('img');
+
+    //       p.innerHTML = data.name;
+    //       img.src = data.image.medium;
+
+    //       document.body.appendChild(p);
+    //       document.body.appendChild(img);
+    //     }
+    //   }
+
+    //   request.onerror = function () {
+    //     console.log('Se ha producido un error')
+    //   }
+      
+    //   request.send();
+
+    // })
+
+    // USANDO JQUERY 
+    // 1ro. Se incluye script de Jquery que se encuentra en code.jquery.com
+    var boton = $('#boton');
+    boton.click(function(ev) {
+      $.getJSON('http://api.tvmaze.com/shows/1', function(data){
+        var p = $('<p>', { html: data.name});
+        var img = $('<img>', {src: data.image.medium});
+        $('body').append(p, img);
+      })
+    })
+  </script>
+  
+</body>
+</html>

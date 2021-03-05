@@ -1,0 +1,20 @@
+{
+  "name": "app",
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "tipso": "^1.0.8"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "parcelify": "^2.2.1"
+  },
+  "scripts": {
+    "build": "browserify index.js > bundle.js -p [ parcelify -o bundle.css]"
+  },
+  "style": [
+    "./node_modules/tipso/src/tipso.css"
+  ],
+  "browser":{
+    "tipso": "./node_modules/tipso/src/tipso.js"
+  }
+}

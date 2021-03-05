@@ -1,0 +1,15 @@
+{
+  "name": "tvify",
+  "description": "Una Web App para selecionar tus shows favoritos",
+  "version": "0.1.0",
+  "dependencies": {
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0"
+  },
+  "scripts": {
+    "build-js": "browserify index.js > app.js"
+  }
+}
+ 

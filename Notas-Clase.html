@@ -1,0 +1,1446 @@
+<!-- 
+Curso de JavaScript y jQuery 2015
+
+Documentación JQuery: https://api.jquery.com/
+
+Conceptos Básicos
+
+1.- ¿Por qué aprender JS (Javascript) y jQuery?
+
+jQuery es una librería de Javascript. Creció Javascript considerablemente gracias al npm 'node package manager / manejador de paquetes por defecto' y NodeJs. Crearon gestores de paquetes tanto para el Front-End como para el Back-End.
+
+
+
+2.- ¿Qué significa DOM?
+
+DOM 'Document Object Model / Modelo de Objetos del Documento'. Es el árbol de jerarquía de todos los documentos HTML que dibuja un navegador. jQuery permite trabajar en ese árbol con mucha facilidad.
+
+
+
+3.- ¿Qué se necesita para el curso?
+
+Se realizará una aplicación web y será solo en Front-End, se utilizará una API TVmaze para acceder a shows de TV. Se debe tener instalado un editor de textos (Sublime Text, Notepad++, Atom, Visual Studio Code, etc) y npm sólo para instalar algunas cosas, no para trabajar con NodeJs propiamente. Se puede implementar jQuery de dos maneras. La primera es descargando nuestra librería y colocandola en nuestro servidor; la segunda es apuntar a un CDN 'Content Delivery Network / Red de entrega de contenidos' (colocando la url de la librería) esto con facilitar el rendimiento por ejemplo si el servidor se encuentra en un país diferente a donde se está accediendo la aplicación aunque se corre con el riesgo de que se caiga el servidor donde esté el archivo js. En https://code.jquery.com/ existen dos versiones, la uncompressed y la minified. Una es para entorno de desarrollo y la otra es para producción. Es lo mismo, sólo que una pesa menos tamaño.
+
+
+
+4.- ¿Por qué usas jQuery?
+
+Por temas laborales y su enfoque web. El proyecto DemocracyOS (que se encuentra en Y Combinator) se enfoca en la política y la participación ciudadana, proyectos de ley, etc.
+
+
+
+5.- ¿Por qué no se usa sólo JavaScript y por qué la necesidad de aprender jQuery?
+
+jQuery facilita nuestra vida en un montón de tareas. Facilita la reutilización de código y a su vez maneja la compatibilidad de los browsers (navegadores) a partir de la versión 9 de IE (Internet Explorer). Interactuar con el comportamiento del DOM tanto en apariencia como en eventos. Manejo de errores.
+
+
+
+6.- ¿Que opinas de los frameworks como AngularJS?
+
+AngularJS permite manejar rutas, se interactua más con el DOM y facilita la construcción de una aplicación Front-End. Otras alternativas que se encuentran de utilizar una librería diferente a jQuery son Lodash o Underscore.js. El 60% de las aplicaciones web trabajan con jQuery. jQuery es una mejora a Prototype (Es preferible usar alguna de los dos, no ambas para no generar conflictos). Hay funcionalidades que jQuery no alcanza a cubrir como las rutas pero existen otras librerías para eso.
+
+
+
+7.- ¿Qué es NPM y cómo instalarlo?
+
+npm 'node package manage' es un gestor de paquetes y módulos. La idea es reutilizar el código que otras personas hacen en un único repositorio (snippets - pequeñas partes reusables de código). Se descarga en https://www.npmjs.com/
+
+
+
+8.- ¿En que momento JavaScript tomo tanta fuerza?
+
+A partir de NodeJS, cada vez fueron aparecieron nuevos módulos y gestor de paquetes como npm. La comunidad fue creciendo bastante, creando un mayor control para el Front-End, por ejemplo el cambio importante de pasar de xml a json. Manipular la página de una manera más eficiente según el DOM.
+
+
+
+9.- ¿jQuery es amigable para sitios móviles?
+
+Bastante amigable. La librería no pesa mucho realmente. En móviles, la primera vez si es necesario ejecutar una serie de scripts. Si son muy exigentes con el performance podrían utilizar otras opciones, pero jQuery permite muchas cosas para móviles.
+
+
+
+10.- ¿Qué tan buena práctica o qué conflictos genera mezclar Vanilla JS con jQuery?
+
+Al final nosotros resultaremos escribiendo VanillaJS en algún momento (JavaScript puro) en vez de jQuery, por ejemplo creando una variable, recorriendo un array, definiendo una función, etc. Pero para obtener un elemento del DOM, realizar una petición de Ajax, agregar una función a un evento es mucho más sencillo hacerlo con jQuery.
+
+
+
+11.- ¿Qué librerías se van a usar en este curso, aparte de jQuery?
+
+jQuery y un poco de npm. Los assets (js, css, img) son recursos que se cargan externamente con el fin de manejar eficientemente los request (peticiones). El bundle 'empaquetado de aplicaciones' compuesto por librerías, imágenes, ficheros, etc, permite a través de paquetes manejar las bibliotecas que depende un programa para su funcionamiento de una manera organizada al momento de instalar o desinstalar un software.
+
+
+
+12.- ¿Que es ECMAScript?
+
+Este define fundamentos, evolución y versionamiento de JavaScript. Especifica mejor este lenguaje e implementa un estandar. Permite definir funciones, clases y objetos. Tiene una mejor sintaxis. Existen actualmente las vesiones ES6 y ES7.
+
+
+
+13.- ¿jQuery y ReactJS comparten casos de uso? Si sí, cuál es mejor y por qué.
+
+ReactJS es una librería para las vistas. Hay muchos plugins de jQuery que uno desea seguir utilizando como por ejemplo un calendario. Al momento de que la vista ya está en el DOM, se le dice a jQuery que dispare ese plugin.
+
+
+
+14.- jQuery UI: ¿Veremos algo al respecto?
+
+jQuery UI (User Interface) es una librería parecida a Boostrap, se utilizará un poco en el curso. XAMPP sirve para montar un servidor independiente totalmente rápido para desarrollar, compuesto con Apache, MySQL, Php y Perl. Jamás se debe montar para un ambiente de producción (No se utilizará XAMPP en el curso).
+
+
+
+15.- ¿Cómo se puede escribir jQuery con la nueva sintaxis ES6? ¿Funciona con babel.js?
+
+Babel.js se utiliza para pasar el código de ES6 a ES5. Esto se hace porque ES6 no es soportado en todos los navegadores.
+
+
+
+16.- ¿Usaremos gulp o grunt?
+
+Ninguna de las dos. No son necesarias. Estas sirven para definir tareas a ejecutar, por lo cual no será necesario. Dentro del npm, archivo package.json en el atributo scripts definimos los scripts que necesitamos. Aunque, el grunt resulta bastante útil en conjunto con un servidor local liveReload, que permite hacer un refresh automático por cada cambio de código.
+
+
+
+17.- jQuery Mobile está en desuso ¿Qué lo reemplaza?
+
+Puede ser reemplazado por frameworks de front-end con boostrap o fundation, material design, Angular Material, etc.
+
+jQuery  Librería de Javascript Brinda funcionalidades para el Front.
+
+npm: gestor de paquetes de Node y JS.
+Browserify: Integracion de paquetes.
+API REST: Facilitan la comunicación para obtener y/o modificar datos del server. (JSON: JS Object Notation)
+
+Restricciones:
+
+Same-Origin Policy: solo se puede hacer request del mismo dominio.
+JSONP (JSON con Padding): establece callbacks para recibir los datos.
+
+CORS (Cross-Origin Resource Sharing): necesita configuracion desde el server.
+
+DOM (Document Object Model): Arbol de jerarquia que compone nuestro documento.
+
+Para la modificacion del DOM se utiliza JS, para esto se usa jQuery, que facilita la seleccion de los elementos del DOM.
+
+jQuery brinda una abstraccion para la interaccion con los diferentes browsers, Reduce mucha escritura de JS.
+
+*********************************
+window.onload = function() {
+  // Espera a la carga de imágenes, iframes...
+};
+
+// Detección del carga del DOM
+$(document, function(){
+  // carga más rápido frente a window.onload
+});
+
+$(function() {
+  // Sin argumento de selección, toma document por defecto
+});
+
+// Selección
+$('#header'); // si el primer argumento es un string, Jquery Busca dentro del árbol jerárquico del DOM los elementos que matcheen con la expresión del string
+
+// Selección dentro de un contexto
+var header = $('header');
+var h1 = $('h1', header);
+
+// Selección con jQuery Object:
+var header = document.getElementById('header');
+var $header = $(header);
+// Por convención, los objectos jQuery se renombra con un prefijo $ para identificarlos
+
+// Selección múltiple
+$('h1', 'h2')
+$( [ document, header ])
+
+++++++++++++++++++++++++++++++++
+Si en un proyecto se utilizan jQuery y Prototype lo recomendable para no tener conflictos con el selector (ya que los dos utilizan $) es escribir el siguiente código:
+
+$.noConflict();
+jQuery(document).ready(function($){
+	$// ya se puede utilizar el selector 
+	 // y reconocerá que es código jQuery
+	 // si se declara $ fuera de esta función sera Prototype
+})
+
+$(’:input’) - Todos los elementos del form (input - textarea - etc)
+$(’:selected’) - Todos los Elementos Seleccionados
+$(’:enabled’) - Todos los Elementos habilitados (checkbox - radio)
+$(’:disabled’) - Todos los Elementos desabilitados
+$(’:Elemento-especifico’)
+
+
+************************************
+
+Teoria de Objetos en jQuery
+
+// Selección de pseudo-selectores
+$(':checked')
+$(':input')
+$(':selected')
+
+// jQuery Object 
+// los elementos de un jQo se puedan acceder mediante un índice pero realmente son objetos
+
+target.innerHTML = '<td>hello</td>';
+$( target ).html('<td>Hello</td>'); 
+
+// anexión de elementos JS vanilla
+var target = document.getElementById('target');
+var newE = document.createElement("div");
+target.parentNode.insertBefore( newElement, target.nextSibling);
+
+// anexión de elementos jQuery
+var target = document.getElementById('target');
+var newE = document.createElement("div");
+$( target ).after ( newElement );
+
+********************************
+OBJETOS DE JQUERY
+
+JQUERY OBJECT
+
+var $h1 = $ (‘h1’);
+var $h1b = $ (‘h1’);
+
+var $h1 y var $h1b no son lo mismo. Aunque estén referenciando al mismo elemento del DOM, para javasript son Objetos diferentes.
+
+Refinamiento de selecciones
+
+$('div.foo').has('p');          // el elemento div.foo contiene elementos <p>
+    $('h1').not('.bar');            // el elemento h1 no posse la clase 'bar'
+    $('ul li').filter('.current');  // un item de una lista desordenada
+  	
+    $('ul li').first();             // el primer item de una lista desordenada
+    $('ul li').eq(5);               // el sexto item de una lista desordenada
+
+/** seudo selectores **/ 
+:button
+Selecciona elementos <button> y con el atributo type='button'
+:checkbox
+Selecciona elementos <input> con el atributo type='checkbox'
+:checked
+Selecciona elementos <input> del tipo checkbox seleccionados
+:disabled
+Selecciona elementos del formulario que están deshabitados
+:enabled
+Selecciona elementos del formulario que están habilitados
+:file
+Selecciona elementos <input> con el atributo type='file'
+:image
+Selecciona elementos <input> con el atributo type='image'
+:input
+Selecciona elementos <input>, <textarea> y <select>
+:password
+Selecciona elementos <input> con el atributo type='password'
+:radio
+Selecciona elementos <input> con el atributo type='radio'
+:reset
+Selecciona elementos <input> con el atributo type='reset'
+:selected
+Selecciona elementos <options> que están seleccionados
+:submit
+Selecciona elementos <input> con el atributo type='submit'
+:text
+Selecciona elementos <input> con el atributo type='text'
+
+$('#myForm :input'); // obtiene todos los elementos inputs
+// dentro del formulario #myForm
+
+Encadenamiento
+
+$('#content').find('h3').eq(2).html('nuevo texto para el tercer elemento h3');
+
+
+Obtener propiedades CSS
+
+$('h1').css('fontSize'); // devuelve una cadena de caracteres como "19px"
+    $('h1').css('font-size');
+
+Establecer propiedades CSS
+
+$('h1').css('fontSize', '100px'); // establece una propiedad individual CSS
+    $('h1').css({ 
+        'fontSize' : '100px',
+        'color' : 'red'     
+    }); // establece múltiples propiedades CSS
+
+Trabajar con clases
+
+var $h1 = $('h1');
+    
+    $h1.addClass('big');
+    $h1.removeClass('big');
+    $h1.toggleClass('big');
+    
+    if ($h1.hasClass('big')) { ... }
+
+Métodos básicos sobre Dimensiones
+
+$('h1').width('50px');   // establece el ancho de todos los elementos H1
+    $('h1').width();         // obtiene el ancho del primer elemento H1
+    
+    $('h1').height('50px');  // establece el alto de todos los elementos H1
+    $('h1').height();        // obtiene el alto del primer elemento H1
+    
+    $('h1').position();      // devuelve un objeto conteniendo
+                             // información sobre la posición
+                             // del primer elemento relativo al
+                             // "offset" (posición) de su elemento padre
+
+Establecer atributos
+
+$('a').attr('href', 'index.html');
+    $('a').attr({
+        'title' : 'all titles are the same',
+        'href' : 'index.html'
+    });
+
+***************************************
+Teoria sobre eventos y callbacks
+
+callbacks
+
+son funciones anonimas que se utilizan mucho cuando
+el parametro que tenemos que enviar es una funcion
+
+eventos
+$('Elemento').on('evento', function(){
+  $(this)
+  .closest('')
+  .addClass('');
+});
+
+Para hacer un "binding" de eventos a ejecutar independiente de si hay nuevos elementos antes o después de la ejecución de una función: 
+$('#list').on( "click", "a", function(event) {
+ // codigo
+});
+
+Esto sirve para hacer una función "viva" y que reconozca cuando hay nuevos elementos en una selección. la diferencia con una función ordinaria de jquery es que aquí se le pasa un tercer parámetro (a) y ya no son 2.
+
+// Eventos sobre el DOM
+
+Callback
+// function que recibe otra function por parámetro
+
+function myFunc(f) {
+  f();
+}
+
+myFunc(function(){
+  // ...
+});
+
+function suma(nuno, ndos) {
+  return nuno + ndos;
+}
+
+// ...
+
+function calculadora(cuenta, nuno , ndos) {
+  return cuenta(nuno, ndos);
+}
+
+calculadora(suma, nuno, ndos);
+
+// sin definir cuenta por cuenta
+function calculadora2(nuno, ndos, cuenta) {
+  return cuenta(nuno, ndos);
+}
+
+// Function recibe dos parámetros porque en calculadora2, le decimos a cuenta que recibe dos argumentos por parámetro
+calculadora2(1, 2, function(nuno, ndos) {
+  return nuno + ndos;
+}
+
+// Asincronía: no conocemos cuando se va a ejecuta la acción
+
+var postID = 'xxx';
+
+// Definición de la función: ejemplo mejor explicado
+
+// La definición es más clara si se escribe antes que a la instancia de la misma:
+function obtenerLikes(unIdCualquiera, callback) {
+
+  // setTimeout no deja de recibir otro callback... sólo que está en el core de JS
+  setTimeout(function(){
+    // Callback es la función que pasamos por parámetro a la hora de instanciar a obtenerLikes
+   // ['x', 'y', 'z' ] es el array que suponemos que recibe por parámetro el callback al instanciar la función (likes)...
+    callback( ['x', 'y', 'z' ] );
+  }, 5000);
+}
+
+obtenerLikes(postId, function(likes) {
+ // No sabemos lo que es likes, sabemos que es un argumento, pero suponemos que es un array, es lo que esperamos
+  alert('Se encontraron' + likes.length + ' likes');
+}
+
+
+
+
+
+
+// Eventos
+
+var button = document.getElementById('myButton');
+button.addEventListener('click', function(event) {
+  // no sabemos cuando ocurre el evento click, cuando lo clicka el usuario, por lo que es asíncrono y se ejecuta su callback cuando ocurra el click
+  alert('Soy un handler, un callback que se termina ejecutando cuando se pasa el evento click');
+});
+
+// Esta podría ser una definición a nivel interno de addEventListener: 
+/* 
+ function addEventListener(action, callback) {
+ if(action) {
+   // event puede ser nulo, es decir, no tiene porque pasarse
+   callback(event = null, someparams...);
+ } elseif(...) {
+  ...
+ }
+}
+*/
+
+// Con jQuery:
+
+$('button').click(function(){
+  // el jQuery Object tiene un método accesible llamado click que recibe un callback...
+  alert('Soy un click en un button');
+});
+
+$('.product button.like).click( function (ev) {
+  // this apunta al ámbito (contexto) de este objeto jQuery, en este caso, cada uno de los botones
+  $(this)
+    .closest('.product') // busca en la jerarquía, hacia arriba, el selector más cercano que matchee con el string que recibe el método closest
+    .addClass('liked');
+});
+
+// Escucha en múltiples eventos:
+$('.button').on("click change"), function() {
+  console.log("se disparo el evento click o change");
+}
+
+// Múltiples eventos con diferentes callbacks:
+$('p').on({
+  "click": function() { console.log("me hicieron click"); },
+  "mouseover": function() { console.log( "me pasaron el mouse por arriba"); }
+});
+
+//.on() realiza bindeo de elementos; actualizar el DOM y el virual DOM con los cambios.
+
+// Métodos de eventos:
+// Brower events:
+.resize()
+.scroll()
+
+// Document loading:
+.ready();
+
+// Event handler attachment
+.off()
+.on()
+.one()
+.trigger()
+.unbind()
+
+// Event Object; variable por parámetro cuando se ocurre el evento:
+event.target
+event.currentTarget
+event.stopPropagation
+event.preventDefault()
+
+// Form event
+.blur()
+.change()
+.select()
+.submit()
+.focus();
+
+// Keyboard events:
+.focusin()
+.focusout()
+.keydown()
+.keypress()
+.keyup()
+
+// Mouse events
+.click()
+.focusout()
+.hover()
+.mouseup()
+// ...
+
+$("form").on("submit", function(event){
+	// Prevenir que el form haga post
+	event.preventDefault();
+
+	//Hacemos lo que queremos como loguar el evento
+	console.log(event);
+
+	var action $(this).attr('action');
+
+	//Hacer el request
+	$.ajax(action, {......})
+	
+}); 
+
+**********************************************************
+
+CALLBACKS Y EFECTO SPINNER
+
+Página loaders: https://projects.lukehaas.me/css-loaders/
+
+*********************************************************
+
+Efectos y transiciones con jQuery
+
+.closest() es una función de jQuery que busca el elemento padre más cercano que cumpla cierta condición 
+
+************************************************
+
+Integración y configuración con NPM
+
+Se crea un package.json dentro de la carpeta del proyecto y ahi se coloca el nombre de éste y la versión, despúes se ejecuta el comando "$ npm install --save jquery" dentro de la consola y asi se agrega la dependencia de jquery. Posteriormente se corre el comando "$ npm install --save-dev browserify" para instalar este gestor de dependencias y luego en el package.json, se hace un script para que al ejecutar "$ npm run build-js" se genere con browserify un archivo app.js a partir de index.js
+
+  "scripts": {
+    "build-js": "browserify index.js > app.js"
+  }
+
+antes de esto, se debe colocar en el index.js esto: "var $ = require('jquery');"
+
+*****************************************************
+Optimización para producción
+
+Babel es una herramienta que nos permite transformar nuestro código JS de última generación (o con funcionalidades extras) a JS que cualquier navegador o versión de Node.
+
+se instala babelify que es una librería para browserify, que es la que realiza la transformación por nosotros.
+
+Complementos BABEL
+Babel es un compilador (código fuente => código de salida). Como muchos otros compiladores, se ejecuta en 3 etapas: análisis, transformación e impresión.
+
+Ahora, fuera de la caja, Babel no hace nada. Básicamente actúa como const babel = code => code;analizar el código y luego generar el mismo código nuevamente. Deberá agregar complementos para que Babel haga cualquier cosa.
+
+En lugar de complementos individuales, también puede habilitar un conjunto de complementos en un ajuste preestablecido .
+
+Transformar complementos
+Estos complementos aplican transformaciones a su código.
+
+Los complementos de transformación habilitarán el complemento de sintaxis correspondiente para que no tenga que especificar ambos.
+
+es2015 es un complemento de transformación para el año 2015
+
+https://babeljs.io/docs/en/plugins/#presets
+
+"build-js": "browserify -t [ babelify --presets [ es2015 ] ] index.js > public/app.js", 
+
+npm install --save serve : es un pequeño servidor web local, sirve a la carpeta que le indiquemos
+
+***********************************************************************
+***********************************************************************
+***************************************************************
+**********************************************************
+
+GUÍA COMPLETA SOBRE ECMAScript 6
+
+ECMAScript 6 es la nueva versión del lenguaje estándar ECMAScript que esta terminada desde Junio de 2015. ES6 es la primer actualización al lenguaje desde que en 2008 salió ECMAScript 5.
+
+Podemos usar ECMAScript 6 en nuestros proyectos actuales, solo necesitamos apoyarnos de una herramienta llamada: Babel.js
+
+
+Babel.js es un transpiler que permite convertir código de ECMAScript 6 a código compatible con la mayoría de navegadores modernos.
+Instalando Babel.js
+Para poder usarlo lo primero es instalarlo, para esto necesitamos tener Node.js o io.js instalado en nuestra computadora.
+
+Una vez instalado node (desde acá voy a usar node para referirme a io.js y Node.js) usando NPM instalamos Babel.js de forma global con el comando:
+
+sudo npm i -g babel
+
+Luego cuando queramos usar Babel podemos usamos el siguiente comando.
+
+babel archivo.js -o build.js
+
+Este nos va a convertir el código de archivo.js de ES6 a ES5 y mostrar el resultado en la consola.
+
+babel-node archivo.js
+
+Este nos va a convertir el código de archivo.js y ejecutarlo con node, de esta forma podemos usar todas las características de ES6 en node.
+
+Usandolo con Browserify
+
+Babel se puede utilizar con Browserify gracias a un plugin de este llamado Babelify, para esto simplemente instalan Browserify y Babel como dependencia de desarrollo de su proyecto con el siguiente comando.
+
+[sudo] npm i -D browserify babelify
+
+Luego utilizamos Browserify pasándole Babelify como transform con el comando:
+
+browserify -t babelify -i src/main.jsx -o build/main.js
+
+Esto va a convertir nuestro código ES6 a ES5, generar un único archivo a partir de nuestro main.js ubicado en la carpeta src, cargar los módulos que hayamos requerido desde node_modules y crear un único archivo ES5 en la carpeta build.
+
+Usandolo con Gulp
+
+Babel también se puede utilizar con Gulp.js utilizando el plugin gulp-babel, para esto descargan Gulp.js y gulp-babel con el siguiente comando.
+
+[sudo] npm i -D gulp gulp-babel
+
+Luego creamos una tarea de Gulp en nuestro archivo gulpfile.js en la raíz del proyecto en la cual leemos los archivos en ES6, ejecutamos gulp-babel y luego guardamos los archivos generados en otra carpeta.
+
+var gulp  = require('gulp');
+var babel = require('gulp-babel');
+
+gulp.task('js', function () {
+  gulp.src('/src/es6/*.js')
+    .pipe(babel())
+    .pipe(gulp.dest('/build/js/'));
+});
+
+Usandolo con Nodemon
+
+Babel también se puede utilizar con nodemon simplemente agregando algunos parámetros al momento de ejecutar nodemon usando el siguiente comando:
+
+nodemon --exec babel-node -- server.js
+
+Con esto podemos usar babel-node para correr nuestra aplicación con Node.js y que cada vez que se realice un cambio se reinicie el servidor.
+
+Usandolo con Mocha
+
+Babel también se puede utilizar con Mocha simplemente agregando algunos parámetros al momento de ejecutar Mocha usando el comando:
+
+mocha --compilers js:babel/register
+
+Variables de bloque y constantes
+
+Variables de bloque
+
+En ES6 se agrega una nueva forma de definir variables usando la palabra let en vez de var.Se diferencia de var en que el scope de una variable definida con let es el bloque en el cual se encuentra la variable y no la función.
+Ejemplo:
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+};
+console.log(i);
+
+Constantes
+
+Algo que sin duda faltaba en JS era las constantes. Con ES6 es posible definir tus propias constantes usando la palabra const en lugar de let o var. 
+
+Una constantes como el nombre indica no puede cambiar de valor una vez definida, tiene un valor constante.Las constantes también tienen un scope de bloque.
+
+const DIEZ = 10;
+DIEZ = 5;
+console.log(DIEZ);
+
+
+Template strings
+
+Los template string son una forma más fácil de crear strings con variables en medio del string o strings multilínea.
+
+Variables en strings
+
+Para meter una variable dentro de un template string hay que colocar el nombre de esta variable entre de ${ y } (no solo variables, incluso pueden ejecutar funciones o colocar expresiones como 2+2).
+
+let nombre = 'Don Pepito';
+console.log(`Hola ${nombre}`);
+
+Strings multilínea
+Para poder crear un string multilínea con template strings basta con apretar enter y en la siguiente línea seguir escribiendo.
+
+let mensaje = `Hola Don Pepito
+Hola Don Jose`;
+console.log(mensaje);
+
+Números en Octal y Binario
+Números en Octal
+
+Desde ES6 va a ser posible definir variables usando números en Octal con el siguiente código:
+
+console.log(0o35);
+
+Números en Binario
+Desde ES6 va a ser posible definir variables usando números en Binario con el siguiente código:
+
+console.log(0b1001);
+
+
+Objeto Math
+
+En ES6 se agregan una lista de nuevos métodos al objeto Math, casi todos ya están soportados desde hace un par de años en los navegadores..
+
+acosh().
+asinh().
+atanh().
+cbrt().
+clz32().
+cosh().
+exp1m().
+fround().
+hypot().
+imul().
+log10().
+
+No puse ejemplos porque son muchos y se pueden ver en Mozilla Developer Network.
+
+
+Métodos de Arrays
+
+Array.from(array, mapFn)
+
+Este nuevo método del objeto Array permite crear un array copiando otro array o un NodeList.Es posible utilizarlos actualmente mediante polyfills.
+
+let arr1 = [1,2,3];
+let arr2 = Array.from(arr1, v => --v; );
+arr2.push(3);
+console.log(arr1);
+console.log(arr2);
+
+Otros métodos
+Además de .from() se agregaron los siguientes métodos:
+
+.of(): crea un nuevo array con un número variado de elementos
+.fill(): llena un array con un nuevo valor en cada elemento
+.find(): busca un elemento dentro de un array y devuelve el valor
+.findIndex(): similar a .find() pero devuelve el índice
+.entries(): devuelve una instancia del objeto Iterator que contiene cada índice y valor del array
+.keys(): similar a .entries() pero el Iterator solo muestra los índices
+.copyWithin(): copia los elementos de un array en las posiciones indicadas
+
+Métodos de Object
+
+Object.assign(objetivo, ...objs)
+
+Este nuevo método permite asignar propiedades de uno o más objetos a otro objeto pisando las propiedades con nombres repetidos por el valor del último objeto indicado. Esta propiedad es muy útil para realizar herencia entre objetos .Este método se puede utilizar ya gracias a un polyfill
+
+let obj1 = {
+  prop1: 'valor'
+};
+let obj2 = {
+  prop2: 'otro valor'
+};
+let obj3 = {
+  prop1: 'nuevo valor'
+};
+
+let obj4 = Object.assign({}, obj1, obj2, obj3);
+console.log(obj4);
+
+Object.is(valor1, valor2)
+Este nuevo método sirve para comparar si dos valores son iguales, devuelve true si ambos son: 
+
+undefined
+null
+true o false
+strings con el mismo largo y los mismos caracteres
+el mismo objeto
+números y ambos: 
+                           son mayores a 0
+                           son menores a 0
+                           son NaN
+                           no son 0, no son NaN y son el mismo número
+
+
+Al igual que .assign() se puede utilizar ya mismo mediante un polyfill.
+
+
+let obj1 = { nombre: 'valor' }
+let obj2 = { nombre: 'valor' };
+
+console.log(Object.is(obj1, obj1));
+console.log(Object.is(obj1, obj2));
+
+Forma abreviada de definición de Objetos
+
+Asignación de propiedades
+
+Con ES6 ahora va a ser mucho más simple (y lógico) utilizar una variable para definir el valor de una propiedad de un objeto.
+
+
+let nombre  = 'Jose';
+let persona = {
+  nombre,
+  honorifico: 'Don'
+};
+console.log(persona);
+
+Asignación de métodos
+
+Al igual que es más fácil usar variables en propiedades también se simplificó la forma de definir métodos en un objeto.
+
+let pepito = {
+  saludar(persona) {
+    return `Hola ${persona.honorifico} ${persona.nombre}`;
+  }
+}
+console.log(pepito.saludar({ nombre:'Jose', honorifico:'Don' }));
+
+Asignación por descomposición
+
+Si ya dijimos que con ES6 nos es más fácil crear objetos usando variables, también nos vas a ser más fácil hacer lo contrarios, descomponer un objeto (o un array) en variables
+
+
+// objetos
+let persona = {
+  nombre: 'Jose',
+  honorifico: 'Don'
+};
+
+let { nombre, honorifico: titulo } = persona;
+console.log(nombre);
+console.log(titulo);
+
+// arrays
+let fecha    = [24, 4, 2015];
+let [d, , y] = fecha;
+console.log(d);
+console.log(y);
+
+Parámetros por defecto
+Algo que siempre falto en JS al momento de definir funciones eran los parámetros con valores por defecto, siendo la única forma de lograr esto redefinir el valor de un parámetro con el mismo parámetro o el valor por defecto (no muy optimo que digamos).
+
+Con ES6 ahora es completamente posible definir un valor por defecto a los parámetros de nuestras funciones al igual que en otros lenguajes de programación.
+
+
+function saludar (nombre, honorifico = 'Don') {
+  return `Hola ${honorifico} ${nombre}`;
+}
+console.log(saludar('Pepito', 'Don'));
+console.log(saludar('Jose'));
+
+Arrow functions
+
+Arrow function es una nueva forma de definir funciones en JS similar a como hace CoffeeScript. Hay distintas variantes en la sintaxis de las arrow function.
+Función de un solo parámetro
+Al crear una arrow function de un solo parámetro no es necesario escribír los paréntesis.Como se puede ver en el ejemplo tampoco es necesario escribír las llaves siempre. Esto ocurre solo cuando la función es de una sola línea y devuelve un valor.
+
+
+let sumarUno = x => x + 1;
+console.log(sumarUno(23));
+
+Función de varios parámetros
+En el caso de que queramos utilizar más de un parámetro ahí sí es necesario envolver el nombre de estos entre paréntesis.
+
+
+let sumar = (x, y = 1) => x + y;
+console.log(sumar(1264, 751));
+console.log(sumar(3));
+
+Función sin parámetros
+También son necesarios los paréntesis si queremos crear una función que no reciba parámetros.
+
+let saludar = () => 'Hola Don Pepito'
+console.log(saludar());
+
+Función con cuerpo
+Por último, si la función tiene más de una línea (o no devuelve ningún valor) es necesario utilizar las llaves.
+
+
+let saludar = persona => {
+  let { nombre, honorifico } = persona;
+  let mensaje = `Hola ${honorifico} ${nombre}`;
+  return mensaje;
+}
+console.log(saludar({ nombre: 'Pepito', honorifico: 'Don' }));
+
+Parámetros rest
+Los parámetros rest son una forma de utilizar parámetros virtualmente infinitos (nunca supe de ningún límite) en una función que vendría a substituír al array arguments que tienen actualmente las funciones.Los parámetros rest se definen agregando ... adelante del nombre que se le quiera asignar al mismo. El parámetro rest tiene que ser siempre el último parámetro de una función.
+
+
+function sumar (a, b, ...c) {
+  let resultado = a + b;
+
+  c.forEach(n => {
+    resultado += n;
+  });
+
+  return resultado;
+}
+console.log(sumar(1,2));
+console.log(sumar(1,2,3));
+console.log(sumar(1,2,3,4));
+console.log(sumar(1,2,3,4,5));
+
+Promesas
+Las promesas es algo que se viene usando ya desde hace un par de años gracias a librerías como Q. En ES6 las promesas van a pasar a tener soporte nativo del lenguaje con una sintaxis bastante simple.
+
+function obtenerDatos () {
+  return new Promise((resolve, reject) => {
+    let n = Math.floor(Math.random() * 2) + 1;
+
+    setTimeout(() => {
+      if (n === 1) resolve('Datos obtenidos');
+      else reject(new Error('Hubo un error al obtener los datos'))
+    }, 500);
+  });
+}
+
+obtenerDatos()
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+Generadores
+Los generadores son un tipo de función especial que permite parar la ejecución de la misma y devolver un valor, para luego poder seguir ejecutándola.
+
+
+function* fibonacci() {
+  let anterior = 0, actual = 1;
+  while(true) {
+    let temp = anterior;
+    anterior = actual;
+    actual  += temp;
+    yield actual;
+  }
+}
+
+let fibo = fibonacci();
+
+for (let i = 0; i < 5; i++) {
+  console.log(fibo.next());
+}
+
+Iterators y for...of
+Iterators
+
+Los Iterators son un tipo de objeto que nos permite iterarlos usando el método .next() (los generadores son instancias de Iterator).
+
+
+let arr  = ['foo','bar','baz'];
+
+let eArr = arr.entries();
+
+console.log(eArr.next());
+console.log(eArr.next());
+console.log(eArr.next());
+console.log(eArr.next());
+for...of
+Este es un nuevo bucle similar a for...in donde la variable que usamos para recorrer un array devuelve el valor de cada elemento y no la posición.Este bucle sirve perfectamente para recorrer un Iterator.
+
+
+let arr = [1,2,3];
+
+for (let n of arr) {
+  console.log(n);
+}
+
+Proxies
+Los proxies de ES6 te permiten interceptar y personalizar las distintas operaciones que se pueden realizar en un objeto.
+
+
+let Jose = {
+  nombre: 'Don Jose'
+};
+
+let proxy = new Proxy(Jose, {
+  get(target, propiedad) {
+    let mensaje = `obteniendo ${propiedad}:
+${target[propiedad]}`;
+    console.log(mensaje);
+  }
+});
+
+proxy.nombre;
+
+Clases
+Desde ES6 se incorporan al lenguaje clases para poder hacer POO más fácilmente (sin prototype). Las clases de ES6 son solo un syntax sugar de la como se hace actualmente con prototype.
+
+Definición de clase
+Para definir una clase simplemente se usa la palabra class seguida del nombre de la clase y luego entre llaves los métodos de esta.
+
+class Persona{
+  constructor(nombre) {
+    this.honorifico = 'Don';
+    this.nombre = nombre;
+  }
+  saludar(persona) {
+    return `Hola ${persona.honorifico} ${persona.nombre}`;
+  }
+}
+
+let Pepito = new Persona('Pepito');
+let Jose   = new Persona('Jose');
+
+console.log(Jose.saludar(Pepito));
+console.log(Pepito.saludar(Jose));
+
+Extendiendo una clase
+Al igual que en otros lenguajes es posible extender una clase agregando extends ClaseBase luego del nombre de la nueva clase.
+
+
+class Perro {
+  constructor(raza) {
+    this.raza = raza;
+  }
+
+  comer() {
+    return 'comiendo'
+  };
+}
+class Bulldog extends Perro {
+  constructor(nombre) {
+    super('Bulldog');
+    this.nombre = nombre;
+  }
+
+  comer() {
+    return `${this.nombre} está ${super.comer()}`;
+  }
+}
+let Tronco = new Bulldog('Tronco');
+console.log(Tronco.comer());
+
+Métodos estáticos
+También es posible definir métodos estáticos que se pueden ejecutar sin necesidad de instanciar la clase simplemente agregando static antes del nombre del método (el método constructor no puede ser estático).
+
+
+class calculadora {
+  static sumar(...numeros) {
+    let resultado = 0;
+
+    numeros.forEach(numero => {
+      resultado += numero;
+    });
+
+    return resultado;
+  }
+}
+
+console.log(calculadora.sumar(1,2,3));
+
+Getters y Setters
+Por último también es posible definir getter y setters agregando get o set antes del nombre de un método.
+
+
+class Persona {
+  constructor(nombre) {
+    this._nombre = nombre;
+  }
+
+  get nombre() {
+    return this._nombre;
+  }
+
+  set nombre(nuevo) {
+    this._nombre = nuevo;
+  }
+}
+
+let Pepito = new Persona('Pepito');
+console.log(Pepito.nombre);
+Pepito.nombre = 'Don Pepito';
+console.log(Pepito.nombre);
+
+Módulos
+
+Desde ES6 vamos a tener un sistema nativo de módulos que viene a sustituir a los actuales CommonJS, AMD, etc.Hay varias formas de exportar e importar módulos con el nuevo sistema.
+
+Exportación única
+
+La primera forma es cuando tenemos un solo dato a exportar (una función, un objeto, etc.), para esto usamos la siguiente sintaxis.
+
+class Persona {
+  constructor(nombre) {
+    this.honorifico = 'Don';
+    this.nombre     = nombre;
+  }
+  saludar(persona) {
+    return `Hola ${persona.honorifico} ${persona.nombre}`;
+  }
+}
+
+export default Persona;
+
+Multiples exportaciones
+
+Se puede dar el caso de querer exportar muchos datos al mismo tiempo, para eso simplemente quitamos el default luego del export.
+
+function sumar (x, y) { return x + y};
+function restar (x, y) { return x - y};
+
+export sumar;
+export restar;
+
+Combinándolos
+
+Por último puede pasar que quieras dejar una exportación por defecto y la posibilidad de importar otros datos especificando.
+
+function sumar (x, y) { return x + y};
+function restar (x, y) { return x - y};
+
+let calculadora = { sumar, restar };
+
+export default calculadora;
+export sumar;
+export restar;
+
+Importando de forma síncrona
+
+Para importar hay dos forma, la primera es la forma síncrona, esta a su vez tiene varias forma. pero todas se basan es usa import seguido del nombre que se le quiere dar al módulo a importar y luego from y la ubicación del módulo en un string.
+
+// desde Exportación única
+import Persona from './archivo.js';
+
+// desde Multiples exportaciones
+import * as calc from './archivo.js';
+
+// desde Combinandolos
+import calc from './archivo.js';
+import { sumar } from './archivo.js';
+
+Importando de forma asíncrona
+La otra forma es la importación asíncrona de módulos, esta además tiene la característica de que va a funcionar desde etiquetas<script> en el HTML. La forma asíncrona tiene dos variantes, una que es la más simple, para cargar un solo módulo, la otra que requiere el uso de promesas permite cargar múltiples módulos de forma asíncrona.
+
+
+// Cargando un solo módulo
+System.import('modulo')
+  .then(modulo => {
+    // código
+  })
+  .catch(error => {
+    // código
+  });
+
+// Cargando múltiples módulos
+Promise
+  .all(['modulo1', 'modulo2', 'modulo3'].map(x => System.import(x)))
+  .then(([modulo1, modulo2, modulo3]) => {
+    // código
+  })
+  .catch(error => {
+    // código
+  });
+Symbols
+
+Introducción
+Los Symbol son un nuevo tipo de primitivo inmutable pensado para ser usado principalmente como identificador de las propiedades de un objeto.
+Creando y usando un Symbol
+
+Con la incorporación de los Symbol las propiedades de un objeto ahora se podrán acceder tanto con comillas como sin comillas.
+
+const nombre = Symbol('nombre');
+const honorifico = Symbol();
+
+let persona = {
+  [nombre]: 'Pepito',
+  [honorifico]: 'Don'
+};
+
+console.log(persona);
+console.log(persona[nombre]);
+console.log(persona[honorifico]);
+
+Symbol.for()
+El objeto Symbol (usado para crear un nuevo primitivo Symbol) posee un método llamado .for(). Este método tiene dos usos, el primero es la creación de un nuevo Symbol, sin necesidad de asignar a una variable, el segundo es encontrar un Symbol ya creado.
+
+
+Symbol.for('nombre'); // crea un nuevo símbolo
+
+let persona = {};
+
+// usa el symbolo 'nombre' para identificar a una propiedad de persona
+persona[Symbol.for('nombre')] = 'Jose';
+
+console.log(persona);
+
+Usandolos para propiedades privadas
+Un posible uso de los Symbol es para poder crear propiedades semi-privadas en object literals.
+
+const nombre  = Symbol('nombre');
+
+const persona = {
+  [nombre]: 'Pepito',
+  get nombre() { return persona[nombre] }
+};
+
+console.log(persona.nombre); // permite el acceso al nombre de persona
+persona.nombre = 'Jose'; // da error al querer cambiarlo
+
+Colecciones de datos
+
+Map
+Los Map son un tipo de estructura de datos que permite relacionar dos datos arbitrarios entre sí y poder fácilmente acceder a ellos.
+
+
+let map = new Map();
+let persona;
+
+map.set('persona', { nombre: 'Jose' }); // guardamos el valor
+
+// comprobamos que exista dentro de nuestro map
+if (map.has('persona')) {
+  persona = map.get('persona'); // lo obtenemos
+}
+
+map.delete('persona'); // borramos 'persona' y el valor asociado
+
+console.log(persona);
+console.log(map.get('persona'));
+
+Son objetos iterables mediante distintas formas, incluyendo la posibilidad de obtener una instancia de un Iterator.
+
+
+// creamos un mapa de múltiples elementos iniciales
+let map = new Map([
+  [1, 'foo'],
+  ['bar', 2],
+  ['baz', 'baz']
+]);
+
+let size = map.size; // obtenemos el tamaño del mapa
+console.log(size);
+
+// distintas formas de iterar un mapa
+map.forEach(v => {
+  console.log(v);
+});
+
+for (let key of map.keys()) {
+  console.log(key);
+}
+
+for (let value of map.values()) {
+  console.log(value);
+}
+
+for (let entrie of map.entries()) {
+  console.log(entrie);
+}
+
+let keys = map.keys();
+console.log(keys.next());
+console.log(keys.next());
+console.log(keys.next());
+
+map.clear(); // lo vaciamos
+
+size = map.size;
+console.log(size);
+
+Set
+Los Set son otro tipo de estructura de datos que permite en este caso guardar valores arbitrarios, sin necesidad de una llave que sirva para acceder a estos. A cambio de no usar una llave para cada valor estos no se pueden repetir. Al igual que los Map estos son iterables.
+
+
+let persona = { nombre: 'Pepito' };
+
+let set = new Set([1, 'foo', 3.14, persona]);
+
+console.log(set.size);
+
+console.log(set.has(1));
+
+set.add('bar');
+
+set.delete(persona);
+
+set.forEach(v => console.log(v));
+
+for (let values of set) {
+  console.log(values);
+}
+
+let values = set.values();
+console.log(values.next());
+console.log(values.next());
+console.log(values.next());
+console.log(values.next());
+
+WeakMap
+Similar a un Map, con la diferencia de que no pueden ser iterados como un Map, no poseen el método clear para vaciarlos completamente y el key debe ser un objeto.
+
+
+let wMap = new WeakMap();
+
+let obj = { first: 'value' }
+
+wMap.set(obj, 'mundo');
+
+console.log(wMap.get(obj));
+
+if (wMap.has(obj)) {
+  wMap.delete(obj);
+
+  console.log(wMap.get(obj));
+}
+
+WeakSet
+Similar a un Set, con laa diferencia de que no pueden ser iterador como un Set y no poseen el método clear para vaciarlos completamente. Solo se pueden guardar objetos.
+
+Al no se iterables solo sirven para poder asignar objetos a valores boleanos que permite comprobar si un objeto está o no está en el WeakSet.
+
+
+let wSet = new WeakSet();
+
+let obj = { first: 'value' };
+
+wSet.add(obj);
+
+if (wSet.has(obj)) {
+  wSet.delete(obj);
+}
+
+ECMAScript 7: El futuro no tan lejano
+
+Ya desde el año pasado están en desarrollo algunas de las nuevas características que va a traer ECMAScript 7 la próxima versión de ES y de JS que en teoría debería estar lista en algún momento del año que viene (2016).
+Object.observe() (draft)
+
+Object.observe() (también llamado O.o()) es un nuevo método del objeto Object que permite realizar un single-way data-binding de un objeto de JavaScript.
+
+ Este nuevo método es utilizado internamente por Polymer gracias a un polyfill. Data-binding Revolutions with Object.observe() - HTML5 Rocks 
+
+¡Esta característica ya funciona en Google Chrome, Node.js e io.js!
+
+
+let persona = {
+  nombre: 'Jose'
+};
+
+Object.observe(persona, changes => {
+  changes.forEach(change => console.log(change));
+});
+
+persona.nombre = 'Pepito';
+persona.honorifico = 'Don';
+delete persona.nombre;
+
+
+Comas extras en parámetros de función (proposal)
+
+En ES7 (y Babel ya tiene soporte) va a ser posible colocar una coma al final del último parámetro de una función (tanto al definir la función como al usarla) y que esta siga ejecutandose correctamente.Esta característica haría los parámetros de funciones más consistentes con los objetos y arrays y facilitaría la generación automática de código (además que aunque parezca raro en varios lenguajes se usa).
+
+function sumar (a,b,) {
+  return a + b;
+}
+
+console.log(sumar(1,2,));
+
+Funciones asíncronas (proposal)
+
+En ES7 (y Babel ya tiene soporte) se incorpora un nuevo tipo de función llamada función asíncrona. Estas se crean agregando la palabra async antes de function al momento de definirla.Una función definida como asíncrona permite realizar cualquier tarea asíncrona (una petición HTTP por ejemplo) y esperar (await) hasta que se obtenga la respuesta para seguir con el código (esto funciona con otras funciones asíncrona o promesas, no con callbacks).
+
+
+const app = Object.freeze({
+  init: async function init () {
+    try {
+      const data1 = await getData(); // hola
+      const data2 = `${data1} mundo`;
+
+      console.log(data2);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+});
+
+app.init();
+
+Sintaxis de unión de funciones (proposal)
+
+En ES7 (y Babel ya tiene soporte) se incorpora al lenguaje el operador :: el cual permitiría realizar un bind de dos funciones para simplificar la sintaxis.
+
+const map    = Array.prototype.map;
+const filter = Array.prototype.filter;
+function mostrar() { console.log(this); return this; }
+function agregar(numeros) {
+  for (let numero of numeros) {
+    this.push(numero);
+  }
+  return this;
+}
+
+const data = [1,2,3];
+
+data
+::mostrar()
+::filter(x => x % 2 !== 0)
+::mostrar()
+::map(x => ++x)
+::mostrar()
+::agregar(data)
+::mostrar();
+
+*************************************************************************
+******************************************************************
+*************************************************************
+*********************************************************
+****************************************************
+
+Selectores con jQuery
+
+"each": "recorreUnArregloElementoPorElemento",
+  "detach": "sirveParaSacarUnElementoDelDOM",
+  "append": "sirveParaPonerUnElementoDentroDelDOM",
+  "slideUp": "animacionQueApareceelementoEnLaPantalla",
+ "css":"permiteModificarElCssDeUnElemento",
+  "appendTo": "añadirElementoDentroDeOtro",
+  "nota": "tratarDeInteracturaLoMenosPosibleConElDOM",
+  "$":"esLoMismoQueJQuery",
+  "#":"ParaReferirseAUnId",
+  "find": "buscarDentroDeUnJQueryObject",
+  "html": "obtieneElContenidoHtmlDentroDeUnObjeto",
+  "alert": "mostraMensajeComoPopUpenBrowser",
+  "eq": "paraAccederAUnElementoPorElIndice",
+  "addClass": "paraAñadirClaseAUnElemento",
+   "target": "_blank QueSeabraEnUnaNuevaVentana",
+  "attr": "ModificarAtributosElementosHtml5"
+
+**********************************************************************
+************************************************************
+****************************************************
+
+Introducción a Component CSS, front-end del futuro
+
+Los proyectos requieren de estrategias para mantenerse en el tiempo y esto se complica cada vez que se escala y escala… Por esta razón, pensar en aprender a usar componentes [Component CSS] como parte de nuestra aplicación web es tan importante.
+
+Component CSS no es más que esa estrategia. Es tan necesaria, que hace de un código incierto una estructura que se entenderá y mantendrá por todos los que tengan claro el concepto.
+
+Es decir, un flujo de trabajo para el día a día.Tengamos claro que los componentes no te van a solucionar el alineado vertical o son el nuevo “Bootstrap”. Se trata de un conjunto de consejos para escribir y organizar tu código basados en estos principios:
+
+Component-based
+
+Divide y vencerás. Piensa en tu aplicación como pequeños pedazos funcionales (componentes) que podrán ser reutilizados de ser necesario.
+
+Modular and Isolated
+
+“Sólo tenías una tarea, sólo una” Los componentes son reutilizables pero no por eso creas que su misión cambiará en los otros lugares donde los uses. La ventaja de tener el componente modular y aislado, es que es tan fácil descartarlo como lo es usarlo.
+
+
+Modular and Isolated
+
+“Sólo tenías una tarea, sólo una” Los componentes son reutilizables pero no por eso creas que su misión cambiará en los otros lugares donde los uses. La ventaja de tener el componente modular y aislado, es que es tan fácil descartarlo como lo es usarlo.
+
+
+Composable
+
+Ten siempre la misión de hacer el tiempo de desarrollo menor.
+
+Predictable
+
+Todos los frameworks famosos de Javascript tienen algo en común: reglas para hacer cosas. De esta manera, alguien que no sepa de la aplicación pero sí de la tecnología, es capaz de editar sin problemas el código. Lo mismo en CSS.
+
+Documentation
+
+Aunque creas que el código se entiende por sí mismo, la documentación no está de más. Inspírate en Bootstrap o Foundation que saben muy bien cómo hacer esto y después, oriéntalo a tu aplicación.Ahora vamos con lo más importante, las reglas. Usaremos una estructura de carpetas y convenciones para escribir CSS. En lo personal, me gustan las convenciones de SuiteCSS para escribir las clases de los componentes. (https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md)
+
+ComponentName
+
+ComponentName–modifierName
+
+ComponentName-descendentName
+
+ComponentName.is-stateOfComponent
+
+u-utilityName
+
+
+Las clases de los componentes empiezan en mayúsculas y cada palabra que lleven también.
+
+Los componentes pueden tener modificadores y estos se dividen con dos guiones “–”. Se usan para tener una variación de estilo respecto al componente principal añadiendo a este una clase. “.Material .Material–lecture”.
+
+
+Las partes de un componente tendrán la división de un guión “-”. Y estas clases son descendentes como el contenido que tendrá el componente. “.Material-content”.Es normal que quieras tener algo de dinamismo en los elementos. Para lograrlo, se suele agregar una clase con esta acción. Para eso existen los estados; estos empezarán con “.is-” y la descripción del estado. “.Material.is-hidden”.
+
+Como bonus, y sin ser parte de un componente, están las utilidades. Estas serán clases generales que te ayudarán en todo el proyecto. Las utilidades empiezan con “.u-” y luego su descripción. Manéjalas con precaución para que los componentes no sean dependientes de ellas. Por ejemplo, puedes crear un contenedor donde irá el componente con utilidades: “.u-wrapper”. 
+
+
+
+ -->
